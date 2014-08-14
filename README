@@ -1,0 +1,17 @@
+This is an issue with xcode6beta4 and iOS 7.1.
+I came across this issue during development of one of my apps.
+
+The issue is the following:
+
+Given the scenario that you have a collectionview with a cell which hosts a button. That button is bound to the bottom of the cell with auto layout.
+The button is meant to generate a log message to see its working.
+The cell needs to be dynamic is height, so the responsible view controller changes its size in collectionView:layout:sizeForItemAtIndexPath:, to be more precise the height increases.
+
+This is recommendet behavior  (as of my knowledge) to get dynamic sized cells in a UIColectionView.
+
+This also works fine in xcode5 for ios7 and in xcode6beta4 for ios8. However, if I deploy this app with xcode6beta4 on ios7.1 (device or simulator) then the button does not work.
+
+I want to know if theres something I did wrong or if this might be a bug somewhere.
+
+Thanks in advance.
+

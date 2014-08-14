@@ -14,16 +14,39 @@
 
 @implementation SSViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.collectionView.dataSource = self;
+    self.collectionView.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+    UIButton *button = (UIButton *)[cell viewWithTag:1];
+    
+    [button addTarget:self action:@selector(touched) forControlEvents:UIControlEventTouchUpInside];
+    
+    return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+ 
+//    return CGSizeMake(297, 120); //thats the real size in the storyboard
+    
+    return CGSizeMake(297, 240); //thats the real size in the storyboard
+}
+
+
+-(void) touched{
+    NSLog(@"touched");
 }
 
 @end
